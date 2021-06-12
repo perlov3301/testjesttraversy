@@ -1,0 +1,14 @@
+{
+  "name": "traversy",
+  "version": "1.0.0",
+  "description": "jest with youtube traversy",
+  "main": "index.js",
+  "scripts": {
+    "test": "jest"
+  },
+  "author": "ShalPerl",
+  "license": "ISC",
+  "devDependencies": {
+    "jest": "^27.0.4"
+  }
+}
