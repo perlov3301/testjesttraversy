@@ -1,0 +1,47 @@
+line terminators: \n, \r, \u2028, \u2029
+. (dot): matches any character,for ex. /.y/ matches "my"
+^ will match any character including newlines
+. in ES2018 "dotAll" flag allows the dot match line terminators
+\d matches any digit.Equivalent to [0-9].for ex.:/\d/ or /[0-9]/ matches "2" in "b2"
+\D matches any character that is not digit.Equivalent to [^0-9].
+   for ex. /\D/ or /[^0-9]/ matches "B" in "B2"
+\w matches any alphnumerical character from Latin, including the underscore.
+   Equivalent to [A-Za-z0-9_].For ex., /\w/ matches "a" in "apple", "5" in "$5.28"
+   "3" in "3D"
+\W matches any character that is not a word character from Latin.
+   Equivalent to [^A-Za-z0-9_].For ex., /\W/ or /[^A-Za-z0-9_]/ matches "%" in "40%".
+\s matches a single white space character.Equivalent to 
+   [\f\n\r\t\v\u00a0\u1680\u2000-\u200a\u2028\u2029\u2029\u202f\u205f\u3000\ufeff].
+   for ex., /\s\w*/ matches " bar" in "foo bar".
+\S matches a single character other than white space.Equivalent to
+   [^\f\n\r\t\v\u00a0 ... \ufeff].for ex., /\S\w*/ matches "foo" in "foo bar".
+*  treated specially means that 0 or more occurences of the preceding character
+   should be matched;for ex., /a*/ means match 0 or more "a"s, /bo*/ matches
+   "boooo" in "a ghost booooed" and "b" in "a bird".
++  /x+/ matches all the "x"s in  "xxxx".Equivalent to {1,}.
+?  [..]? occurs 0 times or once
+{n} [..]{n} occurs n times.
+{n,} [..]{n,} occurs n or more times.
+{n, m} [..]{n, m} at least n times but less than m times.
+\  next character is special (for characters that usually treated literally);for ex., 
+   /\b/ means word boundary.
+$  matches the end of input;for ex., /t$/ does not match "t" in "eater", but
+   does match "t" in "eat"
+^  1. matches the beginning of input; for ex.,
+      /^A/ does not match the "A" in "an A",but does match the first "A" in "An A".
+   2. at the start of a group it means not (!):negated or complemented class
+\b matches a word boundary;for ex.,/\bm/ mathes "m" in "moon",/oon\b/ matches
+   "oon" in "moon"; /\w\b\w/ will never match anyting.
++  matches the preceding item "x" 1 or more times.Equivalent to {1,};for ex.,
+   /a+/ matches all the "a"s in "caaaandy", /d+/ matches all the sequenced digits.
+#lookahead
+  x(?=y) matches "x" only if "x" is followed by "y";for ex.,
+         /Jack(?=Sprat)/ matches "Jack" in "Jack Sprat" only;
+         /Jack(?=Sprat|Bless)/ matches "Jack" in "Jack Sprat" or in "Jack Bless"
+#example
+  /^8|9\d{9}/  mobile number start with 8 or 9 and total digits=10
+  /^[A-Z]{1}\[a-z]{1,}\d{1}[a-z]*/ first character Uppercase;lowercase with max one
+                                   digit between.
+  /^[A-Za-z] www.w3resource.com javascript email validation
+             www.regular-expressions.info how to find or validate an email address
+
